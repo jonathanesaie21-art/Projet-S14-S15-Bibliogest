@@ -3,13 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibliogest</title>
-    <link rel="stylesheet" href="./frontend/css/style.css" />
+    <title>BiblioGest — Système de gestion de bibliothèque</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./frontend/style.css" />
+    <!-- Google Identity Services : fournit window.google.accounts.id, utilisé dans auth.js -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
-    <aside class="nav-bar left" id="navleft"></aside>
-    <main class="" id=""></main>
-    <nav class="nav-bar bottom" id="navBottom"></nav>
+    <!-- Racine de l'application : le routeur y injecte soit la page de connexion, soit le shell (sidebar + topbar + page) -->
+    <div id="app"></div>
+
+    <!-- Portails pour les modales et les notifications toast, montés au-dessus de tout -->
+    <div id="modal-root"></div>
+    <div id="toast-root" class="toast-root"></div>
+
+    <!-- Point d'entrée unique en module ES : tout le reste est importé depuis ici -->
     <script type="module" src="./frontend/js/main.js"></script>
   </body>
 </html>
