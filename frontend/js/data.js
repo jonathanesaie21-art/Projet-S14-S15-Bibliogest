@@ -1,4 +1,5 @@
-export const API_BASE_URL = "http://localhost:3000/api";
+export const API_BASE_URL =
+  "https://projet-s14-s15-bibliogest.onrender.com/api";
 
 /* ---------------------------- ETAT LOCAL ------------------------------- */
 
