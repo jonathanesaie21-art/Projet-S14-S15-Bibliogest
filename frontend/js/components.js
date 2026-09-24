@@ -308,11 +308,7 @@ export function renderTopbar(title, subtitle) {
   </header>`;
 }
 
-/* ================================ GRAPHIQUES ================================
-   Petites fonctions de rendu SVG "faites main" pour ne dépendre d'aucune
-   librairie externe, tout en reproduisant fidèlement les graphiques Recharts
-   de la maquette.
-   ============================================================================ */
+/* ================================ GRAPHIQUES ================================*/
 
 /** Convertit une série de points en tracé lissé (spline Catmull-Rom -> Bézier). */
 function smoothLine(points) {
@@ -332,13 +328,7 @@ function smoothLine(points) {
   return d;
 }
 
-/* ---------------------------- INFOBULLES (hover) --------------------------
-   Les graphiques ci-dessous sont du SVG "fait main", mais restent bien
-   interactifs : chaque point/segment/barre porte un attribut data-tooltip,
-   et wireChartTooltips() (appelée par les pages après le rendu) branche les
-   évènements de survol pour afficher une info-bulle, exactement comme le
-   ferait Recharts.
-   ---------------------------------------------------------------------- */
+/* ---------------------------- INFOBULLES (hover) --------------------------*/
 let tooltipEl = null;
 function ensureTooltipEl() {
   if (!tooltipEl) {
