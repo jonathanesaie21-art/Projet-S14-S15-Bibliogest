@@ -125,8 +125,6 @@ CREATE INDEX idx_reservations_book ON reservations (book_id);
 
 -- ---------------------------------------------------------------------
 -- Compte admin de démarrage (exemple, à adapter)
--- Ne jamais insérer un mot de passe en clair : générer le hash bcrypt
--- côté Node (ex. via un petit script seed.js) puis coller le résultat ici.
 -- ---------------------------------------------------------------------
 -- INSERT INTO users (name, email, role, password_hash)
--- VALUES ('Euloge Ngouma', 'jonathanesaie21@gmail.com', 'admin', '<hash_bcrypt_ici>');
+-- VALUES ('ESAIE Jonathan', 'jonathanesaie21@gmail.com', 'admin', '<hash_bcrypt_ici>');
