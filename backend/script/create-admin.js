@@ -1,7 +1,4 @@
-/**
- * scripts/create-admin.js — à exécuter une fois :
- * node scripts/create-admin.js "Ton Nom" email@bibliotheque.fr motdepasse123
- */
+/*scripts/create-admin.js*/
 import "dotenv/config";
 import bcrypt from "bcrypt";
 import { query } from "../config/db.js";
