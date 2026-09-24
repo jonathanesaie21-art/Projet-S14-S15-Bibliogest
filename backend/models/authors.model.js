@@ -34,10 +34,7 @@ export const authorsApi = {
   async remove(id) {
     // books.author_id est déclaré ON DELETE RESTRICT dans schema.sql :
     // la base refuse elle-même la suppression tant qu'un livre référence
-    // encore cet auteur (code erreur PostgreSQL 23503). On laisse la base
-    // trancher — c'est plus fiable qu'un COUNT() fait à la main avant coup,
-    // qui pourrait être périmé si deux requêtes arrivent en même temps —
-    // et on traduit juste son erreur en message lisible.
+    // encore cet auteur (code erreur PostgreSQL 23503). On laisse la base trancher
     try {
       await query("DELETE FROM authors WHERE id = $1", [id]);
     } catch (err) {
