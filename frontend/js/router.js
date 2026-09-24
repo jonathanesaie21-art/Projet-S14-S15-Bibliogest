@@ -1,5 +1,5 @@
 /**
- * router.js — mini routeur "maison" (pas de framework).
+ * router.js — mini routeur 
  * Affiche la sidebar + la topbar une seule fois, puis ne remplace que le
  * contenu de #page-content à chaque navigation.
  */
