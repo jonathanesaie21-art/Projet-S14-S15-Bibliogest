@@ -1,7 +1,6 @@
 /**
- * auth.js — Page de connexion, maintenant branchée sur une vraie
- * authentification Google (Google Identity Services) au lieu du
- * setTimeout simulé.
+ * auth.js — Page de connexion, branchée sur une vraie
+ * authentification Google (Google Identity Services) 
  *
  * Flux : GIS affiche son propre bouton (rendu dans #google-signin-slot),
  * l'utilisateur clique, Google renvoie un "credential" (un ID token JWT
@@ -10,8 +9,6 @@
  * nous renvoie EN ÉCHANGE un token à nous (JWT signé avec notre propre
  * secret) : c'est CE token-là qu'on garde et qu'on utilise pour parler à
  * notre API ensuite (voir data.js : getAuthToken/setAuthToken/apiFetch).
- * On ne fait jamais confiance au ID token Google pour autre chose que ce
- * tout premier échange.
  */
 import { state, API_BASE_URL, getAuthToken, setAuthToken } from "./data.js";
 import {
@@ -203,7 +200,7 @@ function openForgotPasswordModal() {
             }
             closeModal();
             if (data?.devResetUrl) {
-              // Mode dev (pas de SMTP) : on saute directement à l'écran de
+              // On saute directement à l'écran de
               // nouveau mot de passe, pas besoin d'aller chercher le lien.
               window.location.href = data.devResetUrl;
             } else {
