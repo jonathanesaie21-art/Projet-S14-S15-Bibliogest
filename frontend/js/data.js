@@ -20,8 +20,7 @@ export const state = {
 
 /**
  * Calcule le nombre d'emprunts par jour sur les 7 derniers jours glissants
- * (aujourd'hui inclus), directement depuis state.loans — remplace l'ancien
- * tableau loanTrend codé en dur.
+ * (aujourd'hui inclus), directement depuis state.loans 
  */
 export function computeLoanTrend() {
   const DAY_LABELS = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
@@ -43,7 +42,7 @@ export function computeLoanTrend() {
 /* ------------------------------ AUTH TOKEN ------------------------------- */
 // Source unique pour le token de session : auth.js appelle ces fonctions au
 // lieu de gérer lui-même sessionStorage, pour éviter un import circulaire
-// (auth.js importe déjà `state` depuis ce fichier).
+
 const TOKEN_KEY = "bibliogest_token";
 
 export function getAuthToken() {
@@ -75,8 +74,7 @@ async function apiFetch(path, options = {}) {
   if (res.status === 204) return null; // DELETE réussi : pas de corps de réponse
   const body = await res.json().catch(() => null);
   if (!res.ok) {
-    // Le middleware d'erreur du backend renvoie toujours { error: "message
-    // lisible" } (voir middleware/errorHandler.js) : on le relaie tel quel.
+    
     throw new Error(body?.error || `Erreur ${res.status}`);
   }
   return body;
@@ -100,8 +98,7 @@ export async function loadInitialData() {
 }
 
 /* ============================== REPOSITORY ==============================
-   Même forme qu'avant (list/add/update/remove...), mais chaque méthode
-   parle vraiment au serveur, puis répercute le résultat sur `state` pour
+   Chaque méthode parle vraiment au serveur, puis répercute le résultat sur `state` pour
    que les pages n'aient rien à changer.
    ========================================================================= */
 
@@ -127,9 +124,7 @@ export const authorsApi = {
     return updated;
   },
   async remove(id) {
-    // Peut lancer une erreur (ex: "cet auteur a encore des livres
-    // associés") si la suppression est refusée côté serveur — voir
-    // auteur.js pour la gestion de ce cas.
+  
     await apiFetch(`/authors/${id}`, { method: "DELETE" });
     state.authors = state.authors.filter((a) => a.id !== id);
   },
@@ -227,7 +222,7 @@ export const loansApi = {
     });
     const loan = state.loans.find((l) => l.id === loanId);
     if (loan) Object.assign(loan, updated);
-    // Idem : le retour peut repasser le livre à "available" ou "reserved"
+    // le retour peut repasser le livre à "available" ou "reserved"
     // côté serveur, on relit pour rester synchronisé.
     const freshBook = await apiFetch(`/books/${updated.bookId}`);
     const book = state.books.find((b) => b.id === updated.bookId);
@@ -237,8 +232,7 @@ export const loansApi = {
 };
 
 /* ------------------------------ HELPERS --------------------------------- */
-// Inchangés : ce sont de simples fonctions de lecture sur `state`, elles
-// n'ont pas besoin de savoir d'où viennent les données.
+
 export const findAuthor = (id) => state.authors.find((a) => a.id === id);
 export const findBook = (id) => state.books.find((b) => b.id === id);
 export const findMember = (id) => state.members.find((m) => m.id === id);
