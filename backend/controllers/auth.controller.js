@@ -145,10 +145,7 @@ export async function forgotPassword(req, res, next) {
       // Uniquement quand AUCUN SMTP n'est branché (dev local) : on renvoie
       // le lien directement au frontend pour éviter d'aller le lire dans le
       // terminal. Dès qu'un vrai SMTP est configuré, isMailerConfigured()
-      // devient true et cette ligne ne s'exécute plus jamais — le lien ne
-      // doit alors sortir QUE par email, sinon n'importe qui pourrait
-      // réinitialiser le mot de passe de n'importe quel compte sans jamais
-      // recevoir l'email.
+      // devient true et cette ligne ne s'exécute plus jamais
       if (!isMailerConfigured()) {
         devResetUrl = resetLink;
       }
