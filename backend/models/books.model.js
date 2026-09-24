@@ -1,14 +1,6 @@
 /**
  * models/books.model.js
  * Équivalent backend de booksApi dans data.js.
- *
- * Différence importante avec le mock : dans data.js, book.reservations
- * est un tableau stocké directement sur l'objet livre. En base, c'est une
- * vraie table à part (reservations), reliée par book_id — comme prévu
- * dans schema.sql. On la rassemble ici avec un LEFT JOIN + array_agg
- * pour renvoyer au frontend exactement la même forme qu'avant
- * (book.reservations = tableau d'ids d'adhérents), afin que livre.js et
- * les autres pages n'aient rien à changer.
  */
 import { query, pool } from "../config/db.js";
 
