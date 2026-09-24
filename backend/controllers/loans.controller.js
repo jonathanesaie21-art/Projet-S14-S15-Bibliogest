@@ -18,8 +18,7 @@ export async function createLoan(req, res, next) {
         .json({ error: "bookId, memberId et dueDate sont requis." });
     }
     // Le frontend vérifie déjà que le livre est "available" avant d'envoyer
-    // la requête (voir livre.js / emprunt.js), mais un serveur ne doit
-    // jamais faire confiance à ce que le client affirme avoir vérifié :
+    // la requête (voir livre.js / emprunt.js), et
     // on revalide ici, côté source de vérité.
     const book = await booksApi.findById(bookId);
     if (!book) return res.status(404).json({ error: "Livre introuvable." });
